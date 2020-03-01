@@ -13,8 +13,29 @@
     "addToProject": "yo datocms-plugin:add-to-project",
     "test": "echo 1"
   },
-  "keywords": ["datocms","datocms-plugin","field-editor","json-field","text-field","boolean-field","float-field","integer-field","string-field","links-field","link-field","date-field","date-time-field","video-field","color-field","seo-field","lat-lon-field"],
-  "files": ["dist", "docs"],
+  "keywords": [
+    "datocms",
+    "datocms-plugin",
+    "field-editor",
+    "json-field",
+    "text-field",
+    "boolean-field",
+    "float-field",
+    "integer-field",
+    "string-field",
+    "links-field",
+    "link-field",
+    "date-field",
+    "date-time-field",
+    "video-field",
+    "color-field",
+    "seo-field",
+    "lat-lon-field"
+  ],
+  "files": [
+    "dist",
+    "docs"
+  ],
   "author": "SYMBIO <dev@symbio.agency>",
   "license": "ISC",
   "datoCmsPlugin": {
@@ -23,43 +44,66 @@
     "coverImage": "docs/cover.png",
     "entryPoint": "dist/index.html",
     "pluginType": "field_editor",
-    "fieldTypes": ["json","text","boolean","float","integer","string","links","link","date","date_time","video","color","seo","lat_lon"],
+    "fieldTypes": [
+      "json",
+      "text",
+      "boolean",
+      "float",
+      "integer",
+      "string",
+      "links",
+      "link",
+      "date",
+      "date_time",
+      "video",
+      "color",
+      "seo",
+      "lat_lon"
+    ],
     "parameters": {
-  "global": [],
-  "instance": [
-    {
-      "id": "sourceTypeId",
-      "label": "ID of source item type",
-      "type": "string",
-      "required": true,
-      "default": false,
-      "hint": ""
-    },
-    {
-      "id": "sourceField",
-      "label": "API key of source field",
-      "type": "string",
-      "required": true,
-      "default": false,
-      "hint": ""
-    },
-    {
-      "id": "targetField",
-      "label": "API key of target field",
-      "type": "string",
-      "required": true,
-      "default": false,
-      "hint": ""
+      "global": [
+        {
+          "id": "datoCmsApiToken",
+          "label": "DatoCMS API Token",
+          "type": "string",
+          "required": true,
+          "hint": "The DatoCMS API read-only token, <a href=\"/admin/access_tokens\">get it here</a>"
+        }
+      ],
+      "instance": [
+        {
+          "id": "sourceTypeId",
+          "label": "ID of source item type",
+          "type": "string",
+          "required": true,
+          "default": false,
+          "hint": ""
+        },
+        {
+          "id": "sourceField",
+          "label": "API key of source field",
+          "type": "string",
+          "required": true,
+          "default": false,
+          "hint": ""
+        },
+        {
+          "id": "targetField",
+          "label": "API key of target field",
+          "type": "string",
+          "required": true,
+          "default": false,
+          "hint": ""
+        }
+      ]
     }
-  ]
-}
   },
   "devDependencies": {
-
     "@babel/cli": "^7.0.0-beta.54",
     "@babel/core": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.54",
-    "@babel/register": "^7.0.0-beta.54", "babel-eslint": "^8.2.6",
+    "@babel/register": "^7.0.0-beta.54",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta",
     "concurrently": "^4.0.1",
     "css-loader": "^1.0.0",
@@ -68,6 +112,7 @@
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "generator-datocms-plugin": "^1.0.3",
     "html-webpack-include-assets-plugin": "^1.0.5",
     "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
@@ -78,10 +123,9 @@
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.10",
-    "generator-datocms-plugin": "^1.0.3",
     "yo": "^2.0.5"
   },
   "dependencies": {
-
+    "datocms-client": "^3.0.14"
   }
 }

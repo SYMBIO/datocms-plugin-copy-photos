@@ -1,23 +1,34 @@
-import './style.css';
+import './style.css'
+import { SiteClient } from 'datocms-client'
 
-window.DatoCmsPlugin.init((plugin) => {
-  plugin.startAutoResizer();
+window.DatoCmsPlugin.init(async (plugin) => {
+  plugin.startAutoResizer()
 
-  const select = document.createElement('select');
-  select.options = [];
-
-  const button = document.createElement('button');
-  button.classList.add('DatoCMS-button');
-  button.classList.add('DatoCMS-button--large');
-  button.textContent = 'Zkopírovat fotky';
-
-  button.addEventListener('click', () => {
+  const client = new SiteClient(plugin.parameters.global.datoCmsApiToken)
+  const items = await client.items.all({
+    'filter[type]': plugin.parameters.instance.sourceTypeId,
   });
 
-  const container = document.createElement('div');
-  container.classList.add('container');
-  container.appendChild(select);
-  container.appendChild(button);
+  const select = document.createElement('select')
+  items.forEach(i => {
+    const option = document.createElement('option');
+    option.value = i.id;
+    option.text = i.title;
+    select.appendChild(option);
+  });
 
-  document.body.appendChild(container);
-});
+  const button = document.createElement('button')
+  button.classList.add('DatoCMS-button')
+  button.classList.add('DatoCMS-button--large')
+  button.textContent = 'Zkopírovat fotky'
+
+  button.addEventListener('click', () => {
+  })
+
+  const container = document.createElement('div')
+  container.classList.add('container')
+  container.appendChild(select)
+  container.appendChild(button)
+
+  document.body.appendChild(container)
+})
