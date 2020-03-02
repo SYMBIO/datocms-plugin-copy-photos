@@ -31,6 +31,7 @@ window.DatoCmsPlugin.init((plugin) => {
     }),
   }).then(res => res.json())
     .then((res) => {
+      console.log(res);
       const data = res.data[allItemsQuery];
       const items = {};
       const select = document.createElement('select');
