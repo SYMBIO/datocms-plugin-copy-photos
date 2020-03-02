@@ -8,7 +8,7 @@ window.DatoCmsPlugin.init((plugin) => {
     allItemsQuery,
     sourceField,
     targetField,
-  } = plugin.parameters.instance.titleField;
+  } = plugin.parameters.instance;
 
   fetch('https://graphql.datocms.com/preview', {
     method: 'POST',
