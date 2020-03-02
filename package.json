@@ -72,8 +72,15 @@
       ],
       "instance": [
         {
-          "id": "sourceTypeId",
-          "label": "ID of source item type",
+          "id": "allItemsQuery",
+          "label": "Query name for all source items",
+          "type": "string",
+          "required": true,
+          "hint": ""
+        },
+        {
+          "id": "titleField",
+          "label": "API key of title field of source model",
           "type": "string",
           "required": true,
           "default": false,
@@ -81,7 +88,7 @@
         },
         {
           "id": "sourceField",
-          "label": "API key of source field",
+          "label": "API key of source field with photos",
           "type": "string",
           "required": true,
           "default": false,
