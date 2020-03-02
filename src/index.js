@@ -1,6 +1,6 @@
 import './style.css';
 
-window.DatoCmsPlugin.init(async (plugin) => {
+window.DatoCmsPlugin.init((plugin) => {
   plugin.startAutoResizer();
 
   const {
