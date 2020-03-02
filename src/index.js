@@ -1,13 +1,14 @@
-import './style.css'
-import { SiteClient } from 'datocms-client'
+import './style.css';
 
 window.DatoCmsPlugin.init(async (plugin) => {
-  plugin.startAutoResizer()
+  plugin.startAutoResizer();
 
-  const titleField = plugin.parameters.instance.titleField
-  const allItemsQuery = plugin.parameters.instance.allItemsQuery
-  const sourceField = plugin.parameters.instance.sourceField
-  const targetField = plugin.parameters.instance.targetField
+  const {
+    titleField,
+    allItemsQuery,
+    sourceField,
+    targetField,
+  } = plugin.parameters.instance.titleField;
 
   fetch('https://graphql.datocms.com/preview', {
     method: 'POST',
@@ -30,22 +31,22 @@ window.DatoCmsPlugin.init(async (plugin) => {
     }),
   }).then(res => res.json())
     .then((res) => {
-      const data = res.data[allItemsQuery]
-      const items = {}
-      const select = document.createElement('select')
+      const data = res.data[allItemsQuery];
+      const items = {};
+      const select = document.createElement('select');
 
-      data.forEach(i => {
-        const option = document.createElement('option')
-        option.value = i.id
-        option.text = i[titleField]
-        select.appendChild(option)
-        items[i.id] = i
-      })
+      data.forEach((i) => {
+        const option = document.createElement('option');
+        option.value = i.id;
+        option.text = i[titleField];
+        select.appendChild(option);
+        items[i.id] = i;
+      });
 
-      const button = document.createElement('button')
-      button.classList.add('DatoCMS-button')
-      button.classList.add('DatoCMS-button--large')
-      button.textContent = 'Zkopírovat fotky'
+      const button = document.createElement('button');
+      button.classList.add('DatoCMS-button');
+      button.classList.add('DatoCMS-button--large');
+      button.textContent = 'Zkopírovat fotky';
 
       button.addEventListener('click', () => {
         plugin.setFieldValue(targetField, data[select.selectedIndex][sourceField].map(v => ({
@@ -53,17 +54,17 @@ window.DatoCmsPlugin.init(async (plugin) => {
           alt: null,
           title: null,
           customData: {},
-        })))
-      })
+        })));
+      });
 
-      const container = document.createElement('div')
-      container.classList.add('container')
-      container.appendChild(select)
-      container.appendChild(button)
+      const container = document.createElement('div');
+      container.classList.add('container');
+      container.appendChild(select);
+      container.appendChild(button);
 
-      document.body.appendChild(container)
+      document.body.appendChild(container);
     })
     .catch((error) => {
-      console.log(error)
-    })
-})
+      console.log(error);
+    });
+});
