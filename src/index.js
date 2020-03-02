@@ -78,7 +78,7 @@ window.DatoCmsPlugin.init((plugin) => {
 
           const button = document.createElement('button');
           button.classList.add('DatoCMS-button');
-          button.classList.add('DatoCMS-button--large');
+          button.classList.add('DatoCMS-button--small');
           button.textContent = 'Zkopírovat fotky';
 
           button.addEventListener('click', () => {
