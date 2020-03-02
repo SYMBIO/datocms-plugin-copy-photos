@@ -1,4 +1,8 @@
 .container {
   background-color: white;
-  padding: 16px 0;
+  padding: 0;
+}
+
+.container select {
+  margin-right: 16px;
 }
