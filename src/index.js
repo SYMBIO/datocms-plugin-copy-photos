@@ -86,6 +86,7 @@ window.DatoCmsPlugin.init((plugin) => {
           button.textContent = 'Zkopírovat fotky';
 
           button.addEventListener('click', () => {
+            console.log(plugin.getFieldValue(targetField));
             plugin.setFieldValue(targetField, items[select.selectedIndex][sourceField].map(v => ({
               upload_id: v.id,
               alt: v.alt,
