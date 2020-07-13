@@ -19,15 +19,18 @@ window.DatoCmsPlugin.init((plugin) => {
     },
     body: JSON.stringify({
       query: `{
-            ${allItemsQuery}(orderBy: [${titleField}_ASC], first: 100, skip: 0, filter: { photos: { exists: true }}) {
-              id
-              ${titleField}
-              ${sourceField} {
-                id
-              }
-            }
-          }
-          `,
+  ${allItemsQuery}(orderBy: [${titleField}_ASC], first: 100, skip: 0, filter: { photos: { exists: true }}) {
+    id
+    ${titleField}
+    ${sourceField} {
+      id
+      alt
+      title
+      customData
+    }
+  }
+}
+`,
     }),
   }).then(res => res.json())
     .then((res) => {
@@ -53,15 +56,18 @@ window.DatoCmsPlugin.init((plugin) => {
         },
         body: JSON.stringify({
           query: `{
-            ${allItemsQuery}(orderBy: [${titleField}_ASC], first: 100, skip: 100, filter: { photos: { exists: true }}) {
-              id
-              ${titleField}
-              ${sourceField} {
-                id
-              }
-            }
-          }
-          `,
+  ${allItemsQuery}(orderBy: [${titleField}_ASC], first: 100, skip: 100, filter: { photos: { exists: true }}) {
+    id
+    ${titleField}
+    ${sourceField} {
+      id
+      alt
+      title
+      customData
+    }
+  }
+}
+`,
         }),
       }).then(res2 => res2.json())
         .then((res2) => {
@@ -82,12 +88,7 @@ window.DatoCmsPlugin.init((plugin) => {
           button.textContent = 'Zkopírovat fotky';
 
           button.addEventListener('click', () => {
-            plugin.setFieldValue(targetField, items[select.selectedIndex][sourceField].map(v => ({
-              upload_id: v.id,
-              alt: null,
-              title: null,
-              customData: {},
-            })));
+            plugin.setFieldValue(targetField, items[select.selectedIndex][sourceField]);
           });
 
           const container = document.createElement('div');
