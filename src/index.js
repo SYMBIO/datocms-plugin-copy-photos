@@ -71,7 +71,6 @@ window.DatoCmsPlugin.init((plugin) => {
         }),
       }).then(res2 => res2.json())
         .then((res2) => {
-          console.log(res);
           const data2 = res2.data[allItemsQuery];
 
           data2.forEach((i) => {
@@ -88,7 +87,12 @@ window.DatoCmsPlugin.init((plugin) => {
           button.textContent = 'Zkopírovat fotky';
 
           button.addEventListener('click', () => {
-            plugin.setFieldValue(targetField, items[select.selectedIndex][sourceField]);
+            plugin.setFieldValue(targetField, items[select.selectedIndex][sourceField].map(v => ({
+              upload_id: v.id,
+              alt: v.alt,
+              title: v.title,
+              customData: v.customData,
+            })));
           });
 
           const container = document.createElement('div');
