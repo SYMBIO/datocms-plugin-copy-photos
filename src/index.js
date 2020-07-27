@@ -93,6 +93,7 @@ window.DatoCmsPlugin.init((plugin) => {
               title: v.title,
               customData: v.customData,
             })));
+            console.log(plugin.getFieldValue(targetField));
           });
 
           const container = document.createElement('div');
